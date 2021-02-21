@@ -1,7 +1,7 @@
 import express, {Request, Response} from 'express'
 import {body, validationResult} from 'express-validator'
 import {RequestValidaionError} from '../errors/request-validation-errors'
-import {DatabseConnectionError as DatabaseConnectionError} from '../errors/database-connection-errors'
+import {DatabaseConnectionError} from '../errors/database-connection-errors'
 
 const router = express.Router();
 
