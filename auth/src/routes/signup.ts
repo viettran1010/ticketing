@@ -2,6 +2,7 @@ import express, {Request, Response} from 'express'
 import {body, validationResult} from 'express-validator'
 import {RequestValidaionError} from '../errors/request-validation-errors'
 import {User} from '../models/user'
+import {BadRequestError} from '../errors/bad-request-error'
 
 const router = express.Router();
 
@@ -21,8 +22,7 @@ router.post('/api/users/signup', [
     const existingUser = await User.findOne({email}).exec();
 
     if (existingUser) {
-        console.log('Email in use');
-        return res.send({});
+        throw new BadRequestError('Email in use')
     }
 
     const user = User.build({email, password});
