@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { version } from 'typescript';
 import {Password} from '../services/password'
 interface UserAttrs {
     email: string;
@@ -23,6 +24,16 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     }    
+}, {
+    toJSON: { // overwrite JSON.stringify
+        transform(doc, ret) {
+            ret.id = ret._id;
+            delete ret._id;
+            delete ret.password;            
+            delete ret.__v;
+        }
+        
+    }
 });
 
 userSchema.pre('save', async function (done) { //middleware to rehash password
