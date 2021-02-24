@@ -27,11 +27,10 @@ app.use(signupRouter)
 app.use(signoutRouter)
 app.use(errorHandler)
 
-
 app.all('*', async (req,res)=> {
     throw new NotFoundError();
 })
-
+ 
 const start = async ()=> {
     try {
         await mongoose.connect('mongodb://auth-mongo-srv:27017/auth', {
