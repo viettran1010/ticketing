@@ -29,11 +29,11 @@ router.post('/api/users/signup', [
     const user = User.build({email, password});
 
     await user.save();
-
+    
     const userJwt = jwt.sign({
         id: user.id,
         email: user.email
-    }, 'asdf')
+    }, process.env.JWT_KEY!) // exclamation point here to tell TS this is already checked
 
     req.session = {
         jwt: userJwt
