@@ -1,8 +1,8 @@
 import express from 'express'
-import {body, validationResult} from 'express-validator'
+import {body} from 'express-validator'
 import mongoose from 'mongoose'
 import {Response, Request} from 'express'
-import {RequestValidaionError} from '../errors/request-validation-errors'
+import {validateRequest} from '../middlewares/validate-request'
 
 const router = express.Router();
 
@@ -16,14 +16,8 @@ router.post('/api/users/signin',
     .notEmpty()
     .withMessage('Password cannot be empty')
 ] , 
+validateRequest,
 (req : Request,res: Response)=> {
-
-    console.log('aaaaaaaaaaaaaaaaaaaa')
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-        throw new RequestValidaionError(errors.array());
-    }
 
 })
 
