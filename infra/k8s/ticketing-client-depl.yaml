@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticketing-cient-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ticketing-cient
+  template:
+    metadata:
+      labels:
+        app: ticketing-cient
+    spec:
+      containers:
+        - name: ticketing-client
+          image: viettran1010/ticketing-client
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-srv
+spec:
+  selector:
+    app: ticketing-cient
+  ports:
+    - name: ticketing-cient
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
