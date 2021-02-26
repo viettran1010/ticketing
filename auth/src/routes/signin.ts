@@ -1,9 +1,9 @@
 import express from 'express'
 import {body} from 'express-validator'
 import {Response, Request} from 'express'
-import {validateRequest} from '../middlewares/validate-request'
+import {validateRequest} from '@viettickets/common'
 import {User} from '../models/user'
-import {BadRequestError} from '../errors/bad-request-error'
+import {BadRequestError} from '@viettickets/common'
 import {Password} from '../services/password'
 import jwt from 'jsonwebtoken'
 
