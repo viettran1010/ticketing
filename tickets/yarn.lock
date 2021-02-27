@@ -718,10 +718,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@viettickets/common@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@viettickets/common/-/common-1.0.4.tgz#4b4dc5152fbf48eaccb640d947f69b64595a4e03"
-  integrity sha512-xmZA/ZIhIMiFkm6hGCCDEgG/H3XEPkspju1UBtfMWRYQYSM41SAag3qWVY1SqRXeYHTHstHayB5jUc7GNEcjiQ==
+"@viettickets/common@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@viettickets/common/-/common-1.0.5.tgz#e6a29a37feaa379e166b8f708a23c34a35361328"
+  integrity sha512-gwxkHC1SMcQZmt4ORolH7KxADb+C3Rix6sbp2kK6/bamYrBBnB/VmZo707ScSPwjri+RnsA9L6Z0go0njQvxUw==
   dependencies:
     "@types/cookie-session" "^2.0.42"
     "@types/express" "^4.17.11"

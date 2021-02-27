@@ -8,7 +8,6 @@ router.get('/api/tickets/:id', async (req: Request, res: Response)=> {
     const ticket = await Ticket.findById(req.params.id).exec();
 
     if (!ticket) {
-        console.log('--------------------------: ', ticket)
         throw new NotFoundError();
     }
 
