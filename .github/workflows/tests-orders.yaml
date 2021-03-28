@@ -1,0 +1,11 @@
+name: tests
+
+on: #when to run this workflow
+  pull_request
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest #container
+    steps:
+      - uses: actions/checkout@v2 #take all the codes
+      - run: cd orders && npm install && npm install jest @types/jest ts-jest && npm run test:ci #test:ci for tests to exit when complete. with normal test this will hang and wait for code changes
