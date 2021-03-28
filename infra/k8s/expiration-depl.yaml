@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tickets-depl
+  name: expiration-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tickets
+      app: expiration
   template:
     metadata:
       labels:
-        app: tickets
+        app: expiration
     spec:
       containers:
-        - name: tickets
-          image: viettran1010/tickets
+        - name: expiration
+          image: viettran1010/expiration
           env:
             - name: NATS_CLIENT_ID
               valueFrom:
@@ -24,23 +24,18 @@ spec:
               value: 'http://nats-srv:4222'
             - name: NATS_CLUSTER_ID
               value: ticketing
-            - name: MONGO_URI
-              value: 'mongodb://tickets-mongo-srv:27017/tickets'
-            - name: JWT_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: jwt-secret
-                  key: JWT_KEY
+            - name: REDIS_HOST
+              value: 'expiration-redis-srv'
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: tickets-srv
+  name: expiration-srv
 spec:
   selector:
-    app: tickets
+    app: expiration
   ports:
-    - name: tickets
+    - name: expiration
       protocol: TCP
       port: 3000
       targetPort: 3000
