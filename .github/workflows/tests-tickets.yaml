@@ -1,8 +1,9 @@
 name: tests
 
 on: #when to run this workflow
-  pull_request
-  
+  pull_request:
+    paths:
+      - 'tickets/**' #only run when this folder changes  
 jobs:
   build:
     runs-on: ubuntu-latest #container

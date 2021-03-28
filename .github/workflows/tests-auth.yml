@@ -1,7 +1,9 @@
 name: tests
 
 on: #when to run this workflow
-  pull_request
+  pull_request:
+    paths:
+      - 'auth/**' #only run when this folder changes
   
 jobs:
   build:
@@ -9,3 +11,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2 #take all the codes
       - run: cd auth && npm install && npm install jest @types/jest ts-jest && npm run test:ci #test:ci for tests to exit when complete. with normal test this will hang and wait for code changes
+ 
