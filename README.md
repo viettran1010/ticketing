@@ -1,2 +1,2 @@
 # ticketing
-test ci
+test ci 1
