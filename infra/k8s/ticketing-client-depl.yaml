@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ticketing-cient-depl
+  name: ticketing-client-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ticketing-cient
+      app: ticketing-client
   template:
     metadata:
       labels:
-        app: ticketing-cient
+        app: ticketing-client
     spec:
       containers:
         - name: ticketing-client
@@ -22,9 +22,9 @@ metadata:
   name: client-srv
 spec:
   selector:
-    app: ticketing-cient
+    app: ticketing-client
   ports:
-    - name: ticketing-cient
+    - name: ticketing-client
       protocol: TCP
       port: 3000
       targetPort: 3000
